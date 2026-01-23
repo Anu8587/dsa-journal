@@ -4,58 +4,35 @@ using namespace std;
 int main() {
     int n;
     cin >> n;
-    vector<int> array(n);
-    for(int i = 0; i < n; i++){
-        cin >> array[i];
+
+    int arr[n];
+    for(int i = 0; i < n; i++) {
+        cin >> arr[i];
     }
 
-    int maxele, maxc = 0;
-    int minele, minc = INT_MAX;
+    map<int,int> mp;
 
-    for(int i = 0; i < n; i++){
-        int cnt = 0;
-        for(int j = 0; j < n; j++){
-            if(array[i] == array[j]) cnt++;
-        }
+    int maxfreq = INT_MIN, maxele = 0;
+    int minifreq = INT_MAX, miniele = 0;
 
-        if(cnt > maxc){
-            maxc = cnt;
-            maxele = array[i];
-        }
+    for(int i = 0; i < n; i++)
+        mp[arr[i]]++;
 
-        if(cnt < minc){
-            minc = cnt;
-            minele = array[i];
-        }
+    for (auto it :mp){
+      if(it.second > maxfreq){
+        maxfreq = it.second;
+        maxele = it.first;
+      }
+      if(it.second<minifreq){
+        minifreq = it.second;
+        miniele = it.first;
+      }
     }
 
-    cout << "Most frequent: " << maxele << " (count: " << maxc << ")\n";
-    cout << "Least frequent: " << minele << " (count: " << minc << ")\n";
+    cout << "Max freq element: " << maxele << " (" << maxfreq << ")\n";
+    cout << "Min freq element: " << miniele << " (" << minifreq << ")\n";
 
     return 0;
 }
-int main(){
- int n,q;
-  cin>>n;
- unordered_map<int,int> hash_map;
-  int array[n];
-  for(int i = 0;i<n;i++){
-    cin>>array[i];
-    hash_map[array[i]]++;
-  }
-   int maxele, maxc = 0;
-    int minele, minc = INT_MAX;
 
-for(auto& p: hash_map){
-  if(p.second>maxc){
-    maxc=p.second;
-    maxele=p.first;
-  }
-  if(p.second<minc){
-        minc=p.second;
-    minele=p.first;
-  }
-}
- cout << "Most frequent: " << maxele << " (count: " << maxc << ")\n";
-    cout << "Least frequent: " << minele << " (count: " << minc << ")\n";
-}
+
