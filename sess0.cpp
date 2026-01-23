@@ -35,4 +35,11 @@ int main() {
     return 0;
 }
 
+// // time complexity:
+// map : balanced BST so insert/access o(logk) + n iterations 
+// n*log k
+// o(nlogn)
 
+// n times for fidning elements 
+// so o(nlogn)+o(n)  
+// o(nlogn)
