@@ -1,4 +1,4 @@
-//Find largest/smallest subarray with sum k in Given Array
+//Find count of largest/smallest subarray with sum k in Given Array
 
 #include<bits/stdc++.h>
 using namespace std;
@@ -23,17 +23,36 @@ int n;
 
   first[0] = -1;
   last[0] = -1;
+  
+  int maxCount = 0;
+int minCount = 0;
+
 
   for(int j = 0;j<n;j++){
     sum += arr[j];
 
     if(first.find(sum-k) != first.end()){
         int i = first[sum-k] +1;
-        maxlen = max(maxlen,j-i+1);
+        int len = j - i + 1;
+    if(len > maxlen){
+    maxlen = len;
+    maxCount = 1;      
+}
+else if(len == maxlen){
+    maxCount++;        
+}
+
     }
     if(last.find(sum - k) != last.end()){
             int i = last[sum - k] + 1;
-            minlen = min(minlen, j - i + 1);
+            int len = j - i + 1;
+if(len < minlen){
+    minlen = len;
+    minCount = 1;      
+}
+else if(len == minlen){
+    minCount++;        
+
         }
 
     if(first.find(sum) == first.end()){
@@ -41,6 +60,7 @@ int n;
     } 
     last[sum] = j;  
   }
+}
 
 // brute force
 //   int maxlen = 0;
