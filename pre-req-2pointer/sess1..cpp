@@ -22,7 +22,7 @@ int main(){
     for(int i =0,j=0;j<n;j++){
         sum+=arr[j];
         while(sum>=k){
-            sum-=arr[i];
+            sum = sum -arr[i];
             i++;
 
         }
@@ -30,6 +30,6 @@ int main(){
 
     }
     ll total = n*(n+1)/2;
-    return total-count;
+    cout<< total-count;
 
 }
